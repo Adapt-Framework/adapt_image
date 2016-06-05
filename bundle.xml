@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapt_framework>
+    <bundle>
+        <label>Adapt Image</label>
+        <name>image</name>
+        <version>1.0.0</version>
+        <type>extension</type>
+        <namespace>\adapt\image</namespace>
+        <description>Makes working with images simple and easy.</description>
+        <copyright>2016 Adapt Framework</copyright>
+        <license>MIT</license>
+        <website>http://www.adaptframework.com/documentation/extensions/image</website>
+        <depends_on>
+            <bundle>
+                <name>adapt</name>
+                <version>2.0</version>
+            </bundle>
+            <bundle>
+                <name>user</name>
+                <version>1.0</version>
+            </bundle>
+        </depends_on>
+        <schema>
+            <add>
+                <table name="image">
+                    <field name="image_id" key="primary" auto-increment="Yes" label="Image #" data-type="bigint" />
+                    <field name="user_id" key="foreign" referenced-table-name="user" referenced-field-name="user_id" label="User #" data-type="bigint" />
+                    <field name="file_key" data-type="varchar" max-length="128" nullable="No" label="File key" />
+                    <field name="content_type" data-type="varchar" max-length="256" nullable="No" label="Image type" />
+                    <field name="caption" data-type="varchar" max-length="1024" label="Caption" />
+                    <field name="width" data-type="int" label="Width" />
+                    <field name="height" data-type="int" label="Height" />
+                </table>
+                <table name="image_version">
+                    <field name="image_version_id" key="primary" auto-increment="Yes" label="Image version #" data-type="bigint" />
+                    <field name="image_id" key="foreign" referenced-table-name="image" referenced-field-name="image_id" label="Image #" data-type="bigint" />
+                    <field name="file_key" data-type="varchar" max-length="128" nullable="No" label="Key" />
+                    <field name="content_type" data-type="varchar" max-length="256" nullable="No" label="Image type" />
+                    <field name="action" data-type="enum('resize_to_height', 'resize_to_width', 'resize', 'scale', 'rotate', 'gaussian_blur', 'crop', 'crop_from_center', 'square')" default-value="resize" label="Action" />
+                    <field name="action_resized_to_height" data-type="enum('Yes', 'No')" default-value="No" label="Resized to height?" />
+                    <field name="action_resized_to_width" data-type="enum('Yes', 'No')" default-value="No" label="Resized to width?" />
+                    <field name="action_resized" data-type="enum('Yes', 'No')" default-value="No" label="Resized?" />
+                    <field name="action_scaled" data-type="enum('Yes', 'No')" default-value="No" label="Scaled?" />
+                    <field name="action_rotated" data-type="enum('Yes', 'No')" default-value="No" label="Rotated?" />
+                    <field name="action_gaussian_blur" data-type="enum('Yes', 'No')" default-value="No" label="Has gaussian blur?" />
+                    <field name="action_cropped" data-type="enum('Yes', 'No')" default-value="No" label="Cropped?" />
+                    <field name="action_cropped_from_center" data-type="enum('Yes', 'No')" default-value="No" label="Cropped from center?" />
+                    <field name="action_squared" data-type="enum('Yes', 'No')" default-value="No" label="Squared?" />
+                    <field name="width" data-type="int" label="Width" />
+                    <field name="height" data-type="int" label="Height" />
+                    <field name="scale" data-type="int" label="Scale" />
+                    <field name="degrees" data-type="int" label="Degrees" />
+                    <field name="start_x" data-type="int" label="X" />
+                    <field name="start_y" data-type="int" label="Y" />
+                    <field name="size" data-type="int" label="Size" />
+                </table>
+            </add>
+        </schema>
+    </bundle>
+</adapt_framework>

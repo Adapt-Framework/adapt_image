@@ -5,12 +5,12 @@
  * by Simon Jarvis (http://www.white-hat-web-design.co.uk/articles/php-image-resizing.php#sthash.Rq6mjecu.dpuf)
  */
 
-namespace extensions\image{
+namespace adapt\image{
     
     /* Prevent direct access */
     defined('ADAPT_STARTED') or die;
     
-    class image extends \frameworks\adapt\base{
+    class image extends \adapt\base{
         
         protected $_image;
         protected $_type;
