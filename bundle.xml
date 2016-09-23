@@ -16,7 +16,7 @@
                 <version>2.0</version>
             </bundle>
             <bundle>
-                <name>user</name>
+                <name>users</name>
                 <version>1.0</version>
             </bundle>
         </depends_on>
