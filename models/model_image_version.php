@@ -66,8 +66,8 @@ namespace adapt\image{
                             $key_pairs['action_cropped'] = 'Yes';
                             $key_pairs['height'] = $actions['height'];
                             $key_pairs['width'] = $actions['width'];
-                            $key_pairs['x'] = $actions['x'];
-                            $key_pairs['y'] = $actions['y'];
+                            $key_pairs['start_x'] = $actions['x'];
+                            $key_pairs['start_y'] = $actions['y'];
                             break;
                         case "crop_from_center":
                             $key_pairs['action_cropped_from_center'] = 'Yes';
@@ -83,7 +83,7 @@ namespace adapt\image{
                 }
                 
                 foreach($key_pairs as $key => $value) {
-                    $where->add(new sql_cond($key, sql::EQUALS, sql::q($value)));
+                    if ($value) $where->add(new sql_cond($key, sql::EQUALS, sql::q($value)));
                 }
                 
                 $sql->where($where);
