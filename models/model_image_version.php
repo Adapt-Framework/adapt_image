@@ -8,6 +8,10 @@ namespace adapt\image{
             parent::__construct('image_version', $id, $data_source);
         }
         
+        public function pget_asset_id(){
+            return md5($this->file_key);
+        }
+        
         public function load_by_image_id_and_actions($image_id, $actions){
             $this->initialise();
             

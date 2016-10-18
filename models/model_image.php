@@ -10,6 +10,10 @@ namespace adapt\image{
             parent::__construct('image', $id, $data_source);
         }
         
+        public function pget_asset_id(){
+            return md5($this->file_key);
+        }
+        
         public function load_by_file_key($key){
             $this->initialise();
     
