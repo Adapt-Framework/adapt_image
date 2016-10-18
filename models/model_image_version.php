@@ -5,7 +5,7 @@ namespace adapt\image{
     class model_image_version extends \adapt\model {
         
         public function __construct($id = null, $data_source = null) {
-            parent::__construct($id, $data_source);
+            parent::__construct('image_version', $id, $data_source);
         }
         
         public function load_by_image_id_and_actions($image_id, $actions){
@@ -34,43 +34,49 @@ namespace adapt\image{
                 ];
                 
                 if (isset($actions['actions'])) {
-                    $actions = explode(",", $actions);
-                    foreach($actions as $action) {
+                    $actions['actions'] = explode(",", $actions['actions']);
+                    foreach($actions['actions'] as $action) {
+                        
                         switch($action){
                         case "resize_to_height":
                             $key_pairs['action_resized_to_height'] = 'Yes';
+                            $key_pairs['height'] = $actions['height'];
                             break;
                         case "resize_to_width":
                             $key_pairs['action_resized_to_width'] = 'Yes';
+                            $key_pairs['width'] = $actions['width'];
                             break;
                         case "resize":
                             $key_pairs['action_resized'] = 'Yes';
+                            $key_pairs['height'] = $actions['height'];
+                            $key_pairs['width'] = $actions['width'];
                             break;
                         case "scale":
                             $key_pairs['action_scaled'] = 'Yes';
+                            $key_pairs['scale'] = $actions['scale'];
                             break;
                         case "gaussian_blur":
                             $key_pairs['action_gaussian_blur'] = 'Yes';
                             break;
                         case "crop":
                             $key_pairs['action_cropped'] = 'Yes';
+                            $key_pairs['height'] = $actions['height'];
+                            $key_pairs['width'] = $actions['width'];
+                            $key_pairs['x'] = $actions['x'];
+                            $key_pairs['y'] = $actions['y'];
                             break;
                         case "crop_from_center":
                             $key_pairs['action_cropped_from_center'] = 'Yes';
+                            $key_pairs['height'] = $actions['height'];
+                            $key_pairs['width'] = $actions['width'];
                             break;
                         case "square":
                             $key_pairs['action_squared'] = 'Yes';
+                            $key_pairs['size'] = $actions['size'];
                             break;
                         }
                     }
                 }
-                
-                if (isset($actions['height'])) $key_pairs['height'] = $actions['height'];
-                if (isset($actions['width'])) $key_pairs['width'] = $actions['width'];
-                if (isset($actions['scale'])) $key_pairs['scale'] = $actions['scale'];
-                if (isset($actions['x'])) $key_pairs['x'] = $actions['x'];
-                if (isset($actions['y'])) $key_pairs['y'] = $actions['y'];
-                if (isset($actions['size'])) $key_pairs['size'] = $actions['size'];
                 
                 foreach($key_pairs as $key => $value) {
                     $where->add(new sql_cond($key, sql::EQUALS, sql::q($value)));
