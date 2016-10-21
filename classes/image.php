@@ -61,7 +61,7 @@ namespace adapt\image{
             }
         }
         
-        public function save($image_type = null, $compression = 75){
+        public function save($image_type = null, $compression = 100){
             $filename = TEMP_PATH . $this->file_store->get_new_key();
             $key = $this->file_store->get_new_key();
             
