@@ -74,7 +74,10 @@ namespace adapt\image{
                 return $key;
                 break;
             case IMAGETYPE_PNG:
+                imagealphablending($this->_image, true); // setting alpha blending on
+                imagesavealpha($this->_image, true);
                 imagepng($this->_image, $filename);
+                
                 $this->file_store->set_by_file($key, $filename, $image_type);
                 return $key;
                 break;
@@ -100,6 +103,8 @@ namespace adapt\image{
         
         public function resize($width, $height){
             $new_image = imagecreatetruecolor($width, $height);
+            $transparent = imagecolorallocatealpha($new_image, 255, 255, 255,127);
+            imagefill($new_image,0,0,$transparent);
             imagecopyresampled($new_image, $this->_image, 0, 0, 0, 0, $width, $height, $this->width, $this->height);
             $this->_image = $new_image;
         }
@@ -121,6 +126,8 @@ namespace adapt\image{
         
         public function crop($x, $y, $width, $height){
             $new_image = imagecreatetruecolor($width, $height);
+//            $transparent = imagecolorallocatealpha($new_image, 255, 255, 255,127);
+//            imagefill($new_image,0,0,$transparent);
             imagecopyresampled($new_image, $this->_image, 0, 0, $x, $y, $width, $height, $width, $height);
             $this->_image = $new_image;
         }
