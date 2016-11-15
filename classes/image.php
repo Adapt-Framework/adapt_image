@@ -126,8 +126,8 @@ namespace adapt\image{
         
         public function crop($x, $y, $width, $height){
             $new_image = imagecreatetruecolor($width, $height);
-//            $transparent = imagecolorallocatealpha($new_image, 255, 255, 255,127);
-//            imagefill($new_image,0,0,$transparent);
+            $transparent = imagecolorallocatealpha($new_image, 255, 255, 255,127);
+            imagefill($new_image,0,0,$transparent);
             imagecopyresampled($new_image, $this->_image, 0, 0, $x, $y, $width, $height, $width, $height);
             $this->_image = $new_image;
         }
