@@ -4,12 +4,23 @@
         <label>Adapt Image</label>
         <name>adapt_image</name>
         <version>1.0.0</version>
+        <version_status>release</version_status>
+        <availability>public</availability>
         <type>extension</type>
         <namespace>\adapt\image</namespace>
         <description>Makes working with images simple and easy.</description>
-        <copyright>2016 Adapt Framework</copyright>
+        <copyright>2016 Adapt Matt Bruton</copyright>
         <license>MIT</license>
-        <website>http://www.adaptframework.com/documentation/extensions/image</website>
+        <vendor>
+            <name>Adapt Framework</name>
+            <website>https://www.adaptframework.com</website>
+        </vendor>
+        <authors>
+            <author>
+                <name>Matt Bruton</name>
+                <email>matt.bruton@gmail.com</email>
+            </author>
+        </authors>
         <depends_on>
             <bundle>
                 <name>adapt</name>
