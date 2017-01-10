@@ -8,6 +8,8 @@
         <availability>public</availability>
         <type>extension</type>
         <namespace>\adapt\image</namespace>
+        <version_status>release</version_status>
+        <availability>public</availability>
         <description>Makes working with images simple and easy.</description>
         <copyright>2016 Adapt Matt Bruton</copyright>
         <license>MIT</license>
