@@ -3,7 +3,7 @@
     <bundle>
         <label>Adapt Image</label>
         <name>adapt_image</name>
-        <version>1.0.0</version>
+        <version>0.9.0</version>
         <version_status>release</version_status>
         <availability>public</availability>
         <type>extension</type>
